@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 
     private Camera theCam;
 
-    //public GameObject playerModel;
+    public GameObject playerModel;
     public float rotateSpeed;
 
 
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
             Quaternion newRotation = Quaternion.LookRotation(new Vector3(moveDirection.x, 0f, moveDirection.z));
             
 
-            //playerModel.transform.rotation = Quaternion.Slerp(playerModel.transform.rotation, newRotation, rotateSpeed * Time.deltaTime);
+            playerModel.transform.rotation = Quaternion.Slerp(playerModel.transform.rotation, newRotation, rotateSpeed * Time.deltaTime);
 
         }
     } 
