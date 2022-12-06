@@ -54,4 +54,10 @@ public class GameManager : MonoBehaviour
     }
 
 
+    public void SetSpawnPoint(Vector3 newSpawnPoint)
+    {
+        respawnPosition = newSpawnPoint;
+        Debug.Log("Spawnpoint Set");
+    }
+
 }

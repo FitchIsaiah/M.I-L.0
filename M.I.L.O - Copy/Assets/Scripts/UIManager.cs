@@ -15,12 +15,6 @@ public class UIManager : MonoBehaviour
         instance = this;
     }
 
-
-
-
-
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -47,7 +41,7 @@ public class UIManager : MonoBehaviour
 
             if (blackScreen.color.a == 0f)
             {
-                fadeToBlack = false;
+                fadeFromBlack = false;
             }
 
         }
