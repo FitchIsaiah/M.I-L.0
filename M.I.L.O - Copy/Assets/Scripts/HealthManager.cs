@@ -35,6 +35,10 @@ public class HealthManager : MonoBehaviour
             currentHealth = 0;
             GameManager.instance.Respawn();
         }
+        else
+        {
+            PlayerController.instance.Knockback();
+        }
     }
 
     public void ResetHealth()
