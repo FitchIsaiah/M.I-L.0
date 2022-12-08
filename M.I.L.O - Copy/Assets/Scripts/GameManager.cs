@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;
     private Vector3 respawnPosition;
+
+    public GameObject deathEffects;
+
     private void Awake()
     {
         instance = this;
@@ -40,6 +43,8 @@ public class GameManager : MonoBehaviour
         CameraController.instance.theCMBrain.enabled = false;
 
         UIManager.instance.fadeToBlack = true;
+
+        Instantiate(deathEffects, PlayerController.instance.transform.position + new Vector3(0f, 1f, 0f), PlayerController.instance.transform.rotation);
 
         yield return new WaitForSeconds(2f);
 
