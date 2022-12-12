@@ -11,6 +11,11 @@ public class UIManager : MonoBehaviour
     public float fadeSpeed = 2f;
     public bool fadeToBlack, fadeFromBlack;
     public TextMeshProUGUI healthText; 
+    public Image healthImage;
+
+    public GameObject pauseScreen, optionsScreen;
+
+    public Slider musicVolSlider, sfxVolSlider;
     private void Awake()
     {
         instance = this;
@@ -46,8 +51,36 @@ public class UIManager : MonoBehaviour
             }
 
         }
-
-
+  }
+    public void Resume()
+    {
+        GameManager.instance.PauseUnpause();
+    }
+    public void OpenOptions()
+    {
+        optionsScreen.SetActive(true);
+    }
+    public void CloseOptions()
+    {
+        optionsScreen.SetActive(false);
+    }
+    public void LevelSelect()
+    {
 
     }
+    public void MainMenu()
+    {
+
+    }
+
+    public void SetMusicLevel()
+    {
+        AudioManager.instacne.SetMusicLevel();
+    }
+    public void SetSFXLevel()
+    {
+        AudioManager.instacne.SetSFXLevel();
+    }
+
+
 }

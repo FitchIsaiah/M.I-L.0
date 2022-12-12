@@ -28,12 +28,17 @@ public class GameManager : MonoBehaviour
   
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseUnpause();
+        }
     }
 
     public void Respawn()
     {
         StartCoroutine(RespawnCo());
+
+        //HealthManager.instance.PlayerKilled();
     }
 
     public IEnumerator RespawnCo()
@@ -67,4 +72,28 @@ public class GameManager : MonoBehaviour
         Debug.Log("Spawnpoint Set");
     }
 
-}
+    public void PauseUnpause()
+    {
+        if (UIManager.instance.pauseScreen.activeInHierarchy)
+        {
+            UIManager.instance.pauseScreen.SetActive(false);
+            Time.timeScale = 1f;
+
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+
+        }
+        else
+            {
+
+            UIManager.instance.pauseScreen.SetActive(true);
+            UIManager.instance.CloseOptions();
+            Time.timeScale = 0f;
+
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+        }
+    }
+
+

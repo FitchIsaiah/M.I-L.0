@@ -10,22 +10,22 @@ public class HealthManager : MonoBehaviour
     public int currentHealth, maxHealth;
 
     public float invincibleLength = 2f;
-    private float invincCounter; 
+    private float invincCounter;
 
-    
+    public Sprite[] healthBarImages; 
 
     private void Awake()
     {
         instance = this;
     }
 
-    // Start is called before the first frame update
+   
     void Start()
     {
         ResetHealth();
     }
 
-    // Update is called once per frame
+   
     void Update()
     {
         if(invincCounter > 0)
@@ -69,6 +69,8 @@ public class HealthManager : MonoBehaviour
 
         currentHealth = maxHealth;
 
+        UIManager.instance.healthImage.enabled = true;
+
         UpdateUI();
     }
     public void AddHeath(int amountToHeal)
@@ -87,7 +89,36 @@ public class HealthManager : MonoBehaviour
     public void UpdateUI()
     {
         UIManager.instance.healthText.text = currentHealth.ToString();
+
+        switch (currentHealth)
+        {
+            case 5:
+                UIManager.instance.healthImage.sprite = healthBarImages[4];
+                break;
+
+            case 4:
+                UIManager.instance.healthImage.sprite = healthBarImages[3];
+                break;
+            case 3:
+                UIManager.instance.healthImage.sprite = healthBarImages[2];
+                break;
+            case 2:
+                UIManager.instance.healthImage.sprite = healthBarImages[1];
+                break;
+            case 1:
+                UIManager.instance.healthImage.sprite = healthBarImages[0];
+                break;
+            case 0:
+                UIManager.instance.healthImage.enabled = false;
+                break;
+        }
+
     }
 
+   // public void PlayerKilled()
+    //{
+      //  currentHealth = 0;
+        //UpdateUI();
+    //}
 
 }
